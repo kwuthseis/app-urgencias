@@ -10,3 +10,8 @@ Esta versión se encuentra con los ambientes de Front End y Back End separada en
 - Finalizar la vista de categorización del paciente.
 - Crear la vista de atención del paciente.
 
+## Desarrolladores
+
+Back-End: [Jesus Castillo](https://github.com/jbcastillo)
+
+Front-End: [Klauss Wuth](https://github.com/kwuthseis)
