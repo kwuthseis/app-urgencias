@@ -3,7 +3,7 @@ import ModalExample from "./modal";
 
 class Paciente extends Component {
   render() {
-    const { nombre, apellidos, telefono, rut } = this.props.paciente;
+    const { _id, nombre, apellidos, telefono, rut } = this.props.paciente;
     return (
       <tr>
         <td>{rut}</td>
@@ -11,7 +11,10 @@ class Paciente extends Component {
         <td>{apellidos}</td>
         <td>{telefono}</td>
         <td>
-          <ModalExample />
+          <ModalExample 
+            key={_id}
+            pac_id={_id}
+          />
         </td>
       </tr>
     );

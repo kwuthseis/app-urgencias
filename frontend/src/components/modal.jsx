@@ -17,6 +17,10 @@ class ModalExample extends React.Component {
     });
   }
 
+  handleCategorizacion(pac_id) {
+    console.log("HERE: ", pac_id);
+  }
+
   render() {
     return (
       <div>
@@ -29,15 +33,30 @@ class ModalExample extends React.Component {
           className={this.props.className}
         >
           <ModalHeader toggle={this.toggle}>
-            Categorizacion del Paciente
+            Categorización del Paciente
           </ModalHeader>
-          <ModalBody>Lorem</ModalBody>
+          <ModalBody>
+            <div className="row">
+              <div className="col-md-2">
+              Categoria:
+              </div>
+              <div className="col-md-6">
+                <select name="categoria" id="categoria">
+                  <option value="1">C1</option>
+                  <option value="2">C2</option>
+                  <option value="3">C3</option>
+                  <option value="4">C4</option>
+                  <option value="5">C5</option>
+                </select>
+              </div>
+            </div>
+          </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Do Something
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
+            <Button color="success" onClick={this.handleCategorizacion(this.props.pac_id)}>
+              Categorizar
+            </Button>
+            <Button color="danger" onClick={this.toggle}>
+              Cancelar
             </Button>
           </ModalFooter>
         </Modal>
