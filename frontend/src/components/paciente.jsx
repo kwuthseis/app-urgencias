@@ -3,13 +3,13 @@ import ModalExample from "./modal";
 
 class Paciente extends Component {
   render() {
-    const { nombre, apmat, appat, rut } = this.props.paciente;
+    const { nombre, apellidos, telefono, rut } = this.props.paciente;
     return (
       <tr>
-        <th scope="row">{nombre}</th>
-        <td>{appat}</td>
-        <td>{apmat}</td>
         <td>{rut}</td>
+        <th scope="row">{nombre}</th>
+        <td>{apellidos}</td>
+        <td>{telefono}</td>
         <td>
           <ModalExample />
         </td>

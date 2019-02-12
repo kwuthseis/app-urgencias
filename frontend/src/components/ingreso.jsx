@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
-import axios from "axios";
+//import axios from "axios";
 
 class Ingreso extends Component {
   state = {
@@ -41,11 +41,11 @@ class Ingreso extends Component {
     let pac = paciente[0];
     //console.log("SUBMIT!!", pac);
     event.preventDefault();
-    fetch("http://192.168.0.65:4000/api/pacientes/", {
-      mode: "no-cors",
+    fetch("http://127.0.0.1:4000/api/pacientes/", {
+      mode: "cors",
       method: "POST",
       headers: {
-        "*": "*"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(pac)
     })

@@ -7,34 +7,28 @@ class Pacientes extends Component {
     modal: false
   };
 
-  /* componentWillMount() {
+  componentWillMount() {
     this.downloadListOfUsers();
-  } */
-
+  }
+  
   downloadListOfUsers = () => {
-    fetch("http://192.168.0.65:4000/api/pacientes/", {
-      mode: "no-cors",
+    fetch("http://127.0.0.1:4000/api/pacientes/", {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
       method: "GET"
     })
-      .then(response => console.log(response))
+      .then(response => response.text())
       .then(json => {
-        console.log(json);
-        /* var nuevospaciente = [];
-        json.usuarios.map(usuario => (
-
-          nuevosUsuarios.push({
-            id: usuario._id,
-            name: usuario.nombre,
-            email: usuario.email
-          })
-        ));
-        this.setState({pacientes: nuevosPacientes}); */
+        let respuesta = JSON.parse(json);
+        var pacientes = respuesta.paciente;
+        this.setState({pacientes});
       })
       .catch(error => console.log(error));
   };
 
   render() {
-    this.downloadListOfUsers();
     const { pacientes } = this.state;
     return (
       <div className="jumbotron">
@@ -43,18 +37,18 @@ class Pacientes extends Component {
             <table className="table table-dark">
               <thead>
                 <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido Paterno</th>
-                  <th scope="col">Apellido Materno</th>
                   <th scope="col">Rut</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Telefono</th>
                   <th scope="col">Categorización</th>
                 </tr>
               </thead>
               <tbody>
                 {pacientes
-                  .filter(p => p.categorizacion === 0)
+                  .filter(p => p.categoria === 'null')
                   .map(paciente => (
-                    <Paciente key={paciente.id} paciente={paciente} />
+                    <Paciente key={paciente._id} paciente={paciente} />
                   ))}
               </tbody>
             </table>
