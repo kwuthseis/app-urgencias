@@ -2,24 +2,25 @@
 
 var Paciente = require('../models/paciente.js');
 
-var express = require('express');
-var bodyParser = require ('body-parser');
+const express = require('express');
+const bodyParser = require ('body-parser');
 
-var app = express();
+const app = express();
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 function getPacientes(req, res){
 
     Paciente.find((err, paciente) => {
+
         if(err){
             res.status(500).send({message: 'Error en la peticion'});
         }else{
             if(!paciente){
                 res.status(500).send({message: 'No existen pacientes'});
             }else{
-                    res.status(200).send({paciente});
+                res.status(200).json({paciente});
             }
  
         }
@@ -30,9 +31,6 @@ function getPacientes(req, res){
 function savePaciente(req, res){
     var params = req.body;
     var paciente = new Paciente();
-
-    console.log(req);
-    console.log(params);
 
     paciente.nombre         = params.nombre; 
     paciente.apellidos      = params.apellidos; 

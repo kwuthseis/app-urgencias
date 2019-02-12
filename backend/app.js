@@ -1,7 +1,8 @@
 'use strict'
 
-var express = require('express');
-var bodyParser = require ('body-parser');
+const express = require('express');
+const bodyParser = require ('body-parser');
+const cors = require('cors');
 
 var app = express();
 
@@ -9,8 +10,8 @@ var app = express();
 var paciente_rutas = require('./routes/paciente');
 var usuario_rutas = require('./routes/usuario');
 
-
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
