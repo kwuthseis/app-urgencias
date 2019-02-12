@@ -19,13 +19,12 @@ class Pacientes extends Component {
       },
       method: "GET"
     })
-      .then(response => response.text())
-      .then(json => {
-        let respuesta = JSON.parse(json);
-        var pacientes = respuesta.paciente;
-        this.setState({pacientes});
-      })
-      .catch(error => console.log(error));
+    .then(response => response.json())
+    .then(json => {
+      var pacientes = json.paciente;
+      this.setState({pacientes});
+    })
+    .catch(error => console.log(error));
   };
 
   render() {
