@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/navbar";
 import Pacientes from "./components/pacientes";
 import Ingreso from "./components/ingreso";
+import Atencion from "./components/atencion";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <NavBar />
         <Ingreso />
         <Pacientes />
+        <Atencion />
       </div>
     );
   }
